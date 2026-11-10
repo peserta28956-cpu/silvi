@@ -881,8 +881,7 @@
             showNotification(`Bagian ${sectionName} berhasil disimpan!`, 'success');
         }
 
-        async function persistDataToCloud() {
-    // Tetap simpan cadangan lokal di browser siswa
+   async function persistDataToCloud() {
     localStorage.setItem(`dmi_group_${currentActiveGroupNumber}`, JSON.stringify(currentGroupData));
 
     if (!db) {
@@ -891,15 +890,15 @@
     }
 
     try {
-        // Kirim data langsung ke Firestore Cloud
-        const groupDocRef = doc(db, 'artifacts', appId, 'groups', `group_${currentActiveGroupNumber}`);
+        // Simpan langsung ke koleksi utama 'groups'
+        const groupDocRef = doc(db, 'groups', `group_${currentActiveGroupNumber}`);
         await setDoc(groupDocRef, currentGroupData, { merge: true });
 
         document.getElementById('sync-status-indicator').textContent = 'Tersimpan & Sinkron ke Cloud';
         showNotification('Tugas berhasil dikirim ke server guru!', 'success');
     } catch (err) {
         console.error("Gagal menyimpan ke Firebase:", err);
-        showNotification('Gagal menyinkronkan ke server. Periksa koneksi internet.', 'error');
+        showNotification('Gagal menyinkronkan ke server.', 'error');
     }
 }
         async function fetchGroupData(groupNum) {
@@ -977,19 +976,17 @@
             }
         }
 
-        async function loadTeacherData() {
+  async function loadTeacherData() {
     showNotification('Memuat data terbaru dari server...', 'success');
-
-    // Reset data sementara
     allGroupsData = { 1: null, 2: null, 3: null, 4: null };
 
     if (db) {
         try {
-            const colRef = collection(db, 'artifacts', appId, 'groups');
+            const colRef = collection(db, 'groups');
             const querySnapshot = await getDocs(colRef);
 
             querySnapshot.forEach((docSnap) => {
-                const id = docSnap.id; // contoh: group_1, group_2
+                const id = docSnap.id;
                 if (id.startsWith('group_')) {
                     const num = id.replace('group_', '');
                     allGroupsData[num] = docSnap.data();
@@ -997,7 +994,6 @@
             });
         } catch (err) {
             console.error("Gagal mengambil data dari Firestore:", err);
-            showNotification('Gagal memuat data dari server online.', 'error');
         }
     }
 
