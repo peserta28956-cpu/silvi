@@ -882,25 +882,26 @@
         }
 
         async function persistDataToCloud() {
-            localStorage.setItem(`dmi_group_${currentActiveGroupNumber}`, JSON.stringify(currentGroupData));
-            
-            let master = JSON.parse(localStorage.getItem('dmi_master_groups') || '{}');
-            master[currentActiveGroupNumber] = currentGroupData;
-            localStorage.setItem('dmi_master_groups', JSON.stringify(master));
+    // Tetap simpan cadangan lokal di browser siswa
+    localStorage.setItem(`dmi_group_${currentActiveGroupNumber}`, JSON.stringify(currentGroupData));
 
-            if (!useCloud || !db || !currentUser) {
-                return;
-            }
+    if (!db) {
+        showNotification('Peringatan: Database cloud tidak terhubung.', 'error');
+        return;
+    }
 
-            try {
-                const groupDocRef = doc(db, 'artifacts', appId, 'groups', `group_${currentActiveGroupNumber}`);
-                await setDoc(groupDocRef, currentGroupData, { merge: true });
-                document.getElementById('sync-status-indicator').textContent = 'Tersimpan & Sinkron';
-            } catch (err) {
-                console.warn("Cloud permission/network restriction, using robust local storage sync:", err);
-            }
-        }
+    try {
+        // Kirim data langsung ke Firestore Cloud
+        const groupDocRef = doc(db, 'artifacts', appId, 'groups', `group_${currentActiveGroupNumber}`);
+        await setDoc(groupDocRef, currentGroupData, { merge: true });
 
+        document.getElementById('sync-status-indicator').textContent = 'Tersimpan & Sinkron ke Cloud';
+        showNotification('Tugas berhasil dikirim ke server guru!', 'success');
+    } catch (err) {
+        console.error("Gagal menyimpan ke Firebase:", err);
+        showNotification('Gagal menyinkronkan ke server. Periksa koneksi internet.', 'error');
+    }
+}
         async function fetchGroupData(groupNum) {
             let local = localStorage.getItem(`dmi_group_${groupNum}`);
             if (local) {
@@ -977,39 +978,31 @@
         }
 
         async function loadTeacherData() {
-            let master = JSON.parse(localStorage.getItem('dmi_master_groups') || '{}');
-            for (let i = 1; i <= 4; i++) {
-                if (master[i]) {
-                    allGroupsData[i] = master[i];
-                } else {
-                    const local = localStorage.getItem(`dmi_group_${i}`);
-                    if (local) {
-                        allGroupsData[i] = JSON.parse(local);
-                    } else {
-                        allGroupsData[i] = null;
-                    }
-                }
-            }
+    showNotification('Memuat data terbaru dari server...', 'success');
 
-            if (useCloud && db) {
-                try {
-                    const colRef = collection(db, 'artifacts', appId, 'groups');
-                    const querySnapshot = await getDocs(colRef);
-                    querySnapshot.forEach((docSnap) => {
-                        const id = docSnap.id;
-                        if (id.startsWith('group_')) {
-                            const num = id.replace('group_', '');
-                            allGroupsData[num] = docSnap.data();
-                        }
-                    });
-                } catch (err) {
-                    console.warn("Cloud teacher fetch restricted, using local records:", err);
-                }
-            }
+    // Reset data sementara
+    allGroupsData = { 1: null, 2: null, 3: null, 4: null };
 
-            updateTeacherMetricsAndCards();
-            showNotification('Data guru berhasil dimuat!', 'success');
+    if (db) {
+        try {
+            const colRef = collection(db, 'artifacts', appId, 'groups');
+            const querySnapshot = await getDocs(colRef);
+
+            querySnapshot.forEach((docSnap) => {
+                const id = docSnap.id; // contoh: group_1, group_2
+                if (id.startsWith('group_')) {
+                    const num = id.replace('group_', '');
+                    allGroupsData[num] = docSnap.data();
+                }
+            });
+        } catch (err) {
+            console.error("Gagal mengambil data dari Firestore:", err);
+            showNotification('Gagal memuat data dari server online.', 'error');
         }
+    }
+
+    updateTeacherMetricsAndCards();
+}
 
         let currentFilterStatus = 'all';
         let currentSearchQuery = '';
