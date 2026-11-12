@@ -271,6 +271,60 @@
                     </div>
                 </div>
 
+                <!-- Menu Pemilihan Pertanyaan Utama Berdasarkan Topik -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                    <div class="flex items-center space-x-3 pb-4 border-b border-slate-100 mb-6">
+                        <div class="w-10 h-10 bg-medical-50 text-medical-600 rounded-xl flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900">Pemilihan Fokus Pertanyaan Investigasi Tim</h2>
+                            <p class="text-xs text-slate-500">Pilih salah satu fokus pertanyaan utama yang akan diselidiki oleh tim Anda.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" id="investigation-question-options">
+                        <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 1 & 4</span>
+                                    <input type="radio" name="selected-investigation-question" value="Topik 1 & 4: Urine berbusa tebal" class="text-medical-600 focus:ring-medical-500">
+                                </div>
+                                <p class="text-xs text-slate-700 leading-relaxed">
+                                    Berdasarkan keluhan Pak Jamal yang urinenya berbusa tebal dan tidak cepat hilang, sebenarnya apa yang ada di dalam urine tersebut, dan bagaimana zat itu bisa sampai ke sana hingga memicu busa yang begitu pekat?
+                                </p>
+                            </div>
+                        </label>
+                        <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 2</span>
+                                    <input type="radio" name="selected-investigation-question" value="Topik 2: Edema kaki dan perut" class="text-medical-600 focus:ring-medical-500">
+                                </div>
+                                <p class="text-xs text-slate-700 leading-relaxed">
+                                    Berdasarkan keluhan Pak Jamal yang kedua kaki dan perutnya membengkak, sebenarnya apa yang sedang terjadi di dalam tubuhnya hingga cairan menumpuk di bagian tersebut, dan apa kaitannya dengan hasil pemeriksaan darahnya?
+                                </p>
+                            </div>
+                        </label>
+                        <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 3</span>
+                                    <input type="radio" name="selected-investigation-question" value="Topik 3: Gangguan fungsi ginjal" class="text-medical-600 focus:ring-medical-500">
+                                </div>
+                                <p class="text-xs text-slate-700 leading-relaxed">
+                                    Berdasarkan keluhan dan hasil laboratorium Pak Jamal, sebenarnya bagian ginjal mana yang sedang tidak bekerja normal hingga memicu kondisi fisik yang dialaminya, dan bukti apa dari data yang menguatkan dugaan timmu?
+                                </p>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="saveSection('investigationQuestion')" class="px-5 py-2.5 bg-medical-600 hover:bg-medical-700 text-white font-medium text-sm rounded-xl transition flex items-center space-x-2">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Simpan Pilihan Pertanyaan</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Hypothesis Section -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
                     <div class="flex items-center space-x-3 pb-4 border-b border-slate-100 mb-6">
@@ -646,14 +700,14 @@
         import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'digital-medical-investigation-ginjal';
-       const firebaseConfig = {
-      apiKey: "AIzaSyCOlipYH7UCf8VC0A-huOwJxRCWpydClbY",
-      authDomain: "silvi-d0a12.firebaseapp.com",
-      projectId: "silvi-d0a12",
-      storageBucket: "silvi-d0a12.firebasestorage.app",
-      messagingSenderId: "146679710935",
-      appId: "1:146679710935:web:c591d3e434a2a272325c92"
-    };
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyMockKeyForDevelopmentOnly12345",
+            authDomain: "mock-project.firebaseapp.com",
+            projectId: "mock-project",
+            storageBucket: "mock-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
+        };
 
         let app, db, auth;
         let currentUser = null;
@@ -705,6 +759,7 @@
         let currentActiveGroupNumber = localStorage.getItem('dmi_group_number') || null;
         let currentGroupData = {
             identity: { groupName: '', groupNumber: '', members: '', representative: '', date: new Date().toISOString().split('T')[0] },
+            investigationQuestion: '',
             hypothesis: '',
             physicalTest: { utuhKejernihan: '', utuhPartikel: '', sobekKejernihan: '', sobekPartikel: '', notes: '' },
             analogy: { kertas: '', tepung: '', air: '', saringan: '' },
@@ -984,7 +1039,10 @@
                 return;
             }
 
-            if (sectionName === 'hypothesis') {
+            if (sectionName === 'investigationQuestion') {
+                const selectedQ = document.querySelector('input[name="selected-investigation-question"]:checked');
+                currentGroupData.investigationQuestion = selectedQ ? selectedQ.value : '';
+            } else if (sectionName === 'hypothesis') {
                 currentGroupData.hypothesis = document.getElementById('hypothesis-input').value;
             } else if (sectionName === 'physicalTest') {
                 currentGroupData.physicalTest = {
@@ -1104,6 +1162,11 @@
             document.getElementById('display-active-rep').textContent = currentGroupData.identity.representative;
 
             updateSynthesisQuestions(currentGroupData.identity.groupNumber);
+
+            if (currentGroupData.investigationQuestion) {
+                const radioEl = document.querySelector(`input[name="selected-investigation-question"][value="${currentGroupData.investigationQuestion}"]`);
+                if (radioEl) radioEl.checked = true;
+            }
 
             if (currentGroupData.hypothesis) {
                 document.getElementById('hypothesis-input').value = currentGroupData.hypothesis;
@@ -1330,6 +1393,11 @@
                         <div><span class="text-slate-400">Anggota:</span> <span class="font-semibold">${data.identity.members}</span></div>
                         <div><span class="text-slate-400">Perwakilan:</span> <span class="font-semibold">${data.identity.representative}</span></div>
                     </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                    <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-clipboard-list text-medical-600 mr-2"></i> Fokus Pertanyaan Investigasi</h4>
+                    <p class="text-xs text-slate-700 font-semibold">${data.investigationQuestion || 'Belum dipilih'}</p>
                 </div>
 
                 <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
