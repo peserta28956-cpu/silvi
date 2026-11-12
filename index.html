@@ -192,42 +192,42 @@
 
                 <form id="group-form" onsubmit="saveIdentity(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Kelompok / Tim *</label>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Kelompok / Tim </label>
                         <input type="text" id="group-name" required placeholder="Contoh: Tim Nephron Squad" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Kelompok *</label>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Kelompok </label>
                         <select id="group-number" onchange="handleGroupNumberChange(this.value)" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
                             <option value="">-- Pilih Nomor Kelompok --</option>
-                            <option value="1">Kelompok 1 (Pertanyaan Sintesis Topik 1 & 4)</option>
-                            <option value="2">Kelompok 2 (Pertanyaan Sintesis Topik 2)</option>
-                            <option value="3">Kelompok 3 (Pertanyaan Sintesis Topik 3)</option>
-                            <option value="4">Kelompok 4 (Pertanyaan Sintesis Topik 1 & 4)</option>
+                            <option value="1">Kelompok 1 </option>
+                            <option value="2">Kelompok 2 </option>
+                            <option value="3">Kelompok 3 </option>
+                            <option value="4">Kelompok 4 </option>
                         </select>
                     </div>
                     <div class="md:col-span-2 space-y-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                        <label class="block text-sm font-bold text-slate-800">Peran Anggota Kelompok *</label>
+                        <label class="block text-sm font-bold text-slate-800">Peran Anggota Kelompok </label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">1. Ilmuwan *</label>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">1. Ilmuwan </label>
                                 <input type="text" id="role-ilmuwan" required placeholder="Nama siswa sebagai Ilmuwan" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">2. Peneliti Literatur *</label>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">2. Peneliti Literatur </label>
                                 <input type="text" id="role-peneliti" required placeholder="Nama siswa sebagai Peneliti Literatur" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">3. Pencatat *</label>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">3. Pencatat </label>
                                 <input type="text" id="role-pencatat" required placeholder="Nama siswa sebagai Pencatat" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1">4. Juru Bicara *</label>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">4. Juru Bicara </label>
                                 <input type="text" id="role-jurubicara" required placeholder="Nama siswa sebagai Juru Bicara" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
                             </div>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Perwakilan Pengisi *</label>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Perwakilan Pengisi </label>
                         <input type="text" id="group-representative" required placeholder="Nama siswa penanggung jawab input" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
                     </div>
                     <div>
@@ -286,10 +286,10 @@
                         <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 1 & 4</span>
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Fokus 1</span>
                                     <input type="radio" name="selected-investigation-question" value="Topik 1 & 4: Urine berbusa tebal" class="text-medical-600 focus:ring-medical-500">
                                 </div>
-                                <p class="text-xs text-slate-700 leading-relaxed">
+                                <p class="text-xs text-slate-700 leading-relaxed text-justify">
                                     Berdasarkan keluhan Pak Jamal yang urinenya berbusa tebal dan tidak cepat hilang, sebenarnya apa yang ada di dalam urine tersebut, dan bagaimana zat itu bisa sampai ke sana hingga memicu busa yang begitu pekat?
                                 </p>
                             </div>
@@ -297,10 +297,10 @@
                         <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 2</span>
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Fokus 2</span>
                                     <input type="radio" name="selected-investigation-question" value="Topik 2: Edema kaki dan perut" class="text-medical-600 focus:ring-medical-500">
                                 </div>
-                                <p class="text-xs text-slate-700 leading-relaxed">
+                                <p class="text-xs text-slate-700 leading-relaxed text-justify">
                                     Berdasarkan keluhan Pak Jamal yang kedua kaki dan perutnya membengkak, sebenarnya apa yang sedang terjadi di dalam tubuhnya hingga cairan menumpuk di bagian tersebut, dan apa kaitannya dengan hasil pemeriksaan darahnya?
                                 </p>
                             </div>
@@ -308,10 +308,10 @@
                         <label class="p-4 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200 space-y-2 cursor-pointer transition flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between mb-2">
-                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Topik 3</span>
+                                    <span class="px-2.5 py-1 bg-medical-100 text-medical-800 text-xs font-bold rounded-lg inline-block">Fokus 3</span>
                                     <input type="radio" name="selected-investigation-question" value="Topik 3: Gangguan fungsi ginjal" class="text-medical-600 focus:ring-medical-500">
                                 </div>
-                                <p class="text-xs text-slate-700 leading-relaxed">
+                                <p class="text-xs text-slate-700 leading-relaxed text-justify">
                                     Berdasarkan keluhan dan hasil laboratorium Pak Jamal, sebenarnya bagian ginjal mana yang sedang tidak bekerja normal hingga memicu kondisi fisik yang dialaminya, dan bukti apa dari data yang menguatkan dugaan timmu?
                                 </p>
                             </div>
@@ -474,8 +474,8 @@
                                 <i class="fa-solid fa-shuffle"></i>
                             </div>
                             <div>
-                                <h2 class="text-lg font-bold text-slate-900">1. Transformasi Analogi ke Konsep Biologi</h2>
-                                <p class="text-xs text-slate-500">Hubungkan elemen simulasi di Stasiun A dengan organ/komponen biologis nyata dari Stasiun B.</p>
+                                <h2 class="text-lg font-bold text-slate-900">Transformasi Analogi ke Konsep Biologi</h2>
+                                <p class="text-xs text-slate-500">Hubungkan elemen simulasi saringan dengan organ/komponen biologis nyata dari sumber literratur.</p>
                             </div>
                         </div>
                         <button type="button" onclick="saveSection('analogy')" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-xl shadow transition flex items-center space-x-2">
@@ -487,8 +487,8 @@
                         <table class="w-full text-left border-collapse text-sm">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
-                                    <th class="p-3 font-semibold rounded-l-xl">Elemen Simulasi (Stasiun A)</th>
-                                    <th class="p-3 font-semibold rounded-r-xl">Organ/Komponen Biologis Nyata (Stasiun B)</th>
+                                    <th class="p-3 font-semibold rounded-l-xl">Elemen Simulasi</th>
+                                    <th class="p-3 font-semibold rounded-r-xl">Organ/Komponen Biologis Nyata</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
@@ -956,7 +956,7 @@
 
             let questions = [];
             if (groupNum === '1' || groupNum === '4') {
-                title.textContent = "PERTANYAAN SINTESIS – KELOMPOK 1 & 4";
+                title.textContent = "PERTANYAAN SINTESIS – FOKUS 1";
                 subtitle.textContent = "Fokus: Analisis Urine Berbusa & Proteinuria Glomerulus";
                 questions = [
                     { id: 'q1', text: '1. Hasil lab mana yang menunjukkan urine Pak Jamal berbeda dari urine normal, dan zat apa yang berlebih di sana?' },
@@ -964,7 +964,7 @@
                     { id: 'q3', text: '3. Seharusnya zat itu berada di mana, dan bagian ginjal mana yang bertugas menahannya?' }
                 ];
             } else if (groupNum === '2') {
-                title.textContent = "PERTANYAAN SINTESIS – KELOMPOK 2";
+                title.textContent = "PERTANYAAN SINTESIS – FOKUS 2";
                 subtitle.textContent = "Fokus: Analisis Edema Pembengkakan & Kadar Albumin Darah";
                 questions = [
                     { id: 'q1', text: '1. Hasil lab darah mana yang tidak normal dan berkaitan dengan cairan tubuh?' },
@@ -972,7 +972,7 @@
                     { id: 'q3', text: '3. Lewat bagian ginjal mana zat itu bisa hilang dari darah Pak Jamal, dan apa buktinya di hasil lab urine?' }
                 ];
             } else if (groupNum === '3') {
-                title.textContent = "PERTANYAAN SINTESIS – KELOMPOK 3";
+                title.textContent = "PERTANYAAN SINTESIS – FOKUS 3";
                 subtitle.textContent = "Fokus: Struktur Saringan Glomerulus & Kebocoran Nefron";
                 questions = [
                     { id: 'q1', text: '1. Zat apa yang seharusnya tertahan di darah tetapi ditemukan di urine Pak Jamal?' },
@@ -1429,7 +1429,7 @@
                     <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-shuffle text-indigo-600 mr-2"></i> Transformasi Analogi ke Konsep Biologi</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full text-xs text-left">
-                            <tr class="bg-slate-100 font-semibold"><th class="p-2">Elemen Simulasi (Stasiun A)</th><th class="p-2">Komponen Biologis Nyata (Stasiun B)</th></tr>
+                            <tr class="bg-slate-100 font-semibold"><th class="p-2">Elemen Simulasi</th><th class="p-2">Komponen Biologis Nyata</th></tr>
                             <tr class="border-b border-slate-100"><td class="p-2 font-medium">Kertas saring</td><td class="p-2">${an.kertas || '-'}</td></tr>
                             <tr class="border-b border-slate-100"><td class="p-2 font-medium">Partikel tepung</td><td class="p-2">${an.tepung || '-'}</td></tr>
                             <tr class="border-b border-slate-100"><td class="p-2 font-medium">Air yang lolos</td><td class="p-2">${an.air || '-'}</td></tr>
