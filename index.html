@@ -205,9 +205,26 @@
                             <option value="4">Kelompok 4 (Pertanyaan Sintesis Topik 1 & 4)</option>
                         </select>
                     </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Anggota Kelompok *</label>
-                        <textarea id="group-members" rows="2" required placeholder="Tuliskan nama seluruh anggota kelompok (pisahkan dengan koma atau baris baru)" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition"></textarea>
+                    <div class="md:col-span-2 space-y-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <label class="block text-sm font-bold text-slate-800">Peran Anggota Kelompok *</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">1. Ilmuwan *</label>
+                                <input type="text" id="role-ilmuwan" required placeholder="Nama siswa sebagai Ilmuwan" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">2. Peneliti Literatur *</label>
+                                <input type="text" id="role-peneliti" required placeholder="Nama siswa sebagai Peneliti Literatur" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">3. Pencatat *</label>
+                                <input type="text" id="role-pencatat" required placeholder="Nama siswa sebagai Pencatat" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">4. Juru Bicara *</label>
+                                <input type="text" id="role-jurubicara" required placeholder="Nama siswa sebagai Juru Bicara" class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-medical-500 focus:outline-none">
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Perwakilan Pengisi *</label>
@@ -274,6 +291,62 @@
                     </div>
                 </div>
 
+                <!-- PART 2.5: Physical Filtration Test Evidence Table -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 mb-6 gap-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-filter"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-slate-900">Data Hasil Uji Fisik Saringan (Bukti Fisik)</h2>
+                                <p class="text-xs text-slate-500">Catat pengamatan uji fisik saringan, kejernihan cairan, dan kondisi partikel.</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="saveSection('physicalTest')" class="px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-medium text-sm rounded-xl shadow transition flex items-center space-x-2">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Simpan Uji Fisik</span>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto mb-4">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200 text-justify">
+                                    <th class="p-3 font-semibold rounded-l-xl">Kondisi Saringan</th>
+                                    <th class="p-3 font-semibold">Kejernihan (Bening/Keruh) Cairan</th>
+                                    <th class="p-3 font-semibold rounded-r-xl">Partikel Tepung Saringan (Tertahan/Lolos)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Saringan UTUH</td>
+                                    <td class="p-3">
+                                        <input type="text" id="physical-utuh-kejernihan" placeholder="Contoh: Bening" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                    <td class="p-3">
+                                        <input type="text" id="physical-utuh-partikel" placeholder="Contoh: Tertahan" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Saringan SOBEK</td>
+                                    <td class="p-3">
+                                        <input type="text" id="physical-sobek-kejernihan" placeholder="Contoh: Keruh" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                    <td class="p-3">
+                                        <input type="text" id="physical-sobek-partikel" placeholder="Contoh: Lolos" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Catatan tambahan (opsional) — hal lain yang kalian amati di stasiun ini dan mungkin berguna untuk pemecahan kasus:</label>
+                        <textarea id="physical-notes" rows="2" placeholder="Tuliskan catatan tambahan di sini..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition"></textarea>
+                    </div>
+                </div>
+
                 <!-- PART 3: Medical Lab Analysis Table -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 mb-6 gap-2">
@@ -336,6 +409,61 @@
 
                     <div class="space-y-4" id="literature-cards-container">
                         <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- PART 4.5: Analogy Transformation Table -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 mb-6 gap-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-lg font-bold text-slate-900">1. Transformasi Analogi ke Konsep Biologi</h2>
+                                <p class="text-xs text-slate-500">Hubungkan elemen simulasi di Stasiun A dengan organ/komponen biologis nyata dari Stasiun B.</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="saveSection('analogy')" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-xl shadow transition flex items-center space-x-2">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Simpan Analogi</span>
+                        </button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                                    <th class="p-3 font-semibold rounded-l-xl">Elemen Simulasi (Stasiun A)</th>
+                                    <th class="p-3 font-semibold rounded-r-xl">Organ/Komponen Biologis Nyata (Stasiun B)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Kertas saring</td>
+                                    <td class="p-3">
+                                        <input type="text" id="analogy-kertas" placeholder="Tuliskan komponen biologis nyata..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Partikel tepung</td>
+                                    <td class="p-3">
+                                        <input type="text" id="analogy-tepung" placeholder="Tuliskan komponen biologis nyata..." class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Air yang lolos</td>
+                                    <td class="p-3">
+                                        <input type="text" id="analogy-air" placeholder="Tuliskan komponen biologis nyata..." class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3 font-medium text-slate-700">Saringan yang dilubangi</td>
+                                    <td class="p-3">
+                                        <input type="text" id="analogy-saringan" placeholder="Tuliskan komponen biologis nyata..." class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-medical-500 focus:outline-none transition">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -517,14 +645,15 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-      apiKey: "AIzaSyCOlipYH7UCf8VC0A-huOwJxRCWpydClbY",
-      authDomain: "silvi-d0a12.firebaseapp.com",
-      projectId: "silvi-d0a12",
-      storageBucket: "silvi-d0a12.firebasestorage.app",
-      messagingSenderId: "146679710935",
-      appId: "1:146679710935:web:c591d3e434a2a272325c92"
-    };
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'digital-medical-investigation-ginjal';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyMockKeyForDevelopmentOnly12345",
+            authDomain: "mock-project.firebaseapp.com",
+            projectId: "mock-project",
+            storageBucket: "mock-project.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
+        };
 
         let app, db, auth;
         let currentUser = null;
@@ -577,6 +706,8 @@
         let currentGroupData = {
             identity: { groupName: '', groupNumber: '', members: '', representative: '', date: new Date().toISOString().split('T')[0] },
             hypothesis: '',
+            physicalTest: { utuhKejernihan: '', utuhPartikel: '', sobekKejernihan: '', sobekPartikel: '', notes: '' },
+            analogy: { kertas: '', tepung: '', air: '', saringan: '' },
             labAnalysis: {},
             literature: {},
             synthesis: {},
@@ -602,6 +733,7 @@
         window.handleGroupNumberChange = handleGroupNumberChange;
         window.downloadStudentPDF = downloadStudentPDF;
         window.downloadTeacherPDF = downloadTeacherPDF;
+        window.deleteGroupSubmission = deleteGroupSubmission;
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('group-date').value = new Date().toISOString().split('T')[0];
@@ -711,10 +843,23 @@
         function buildLiteratureCards() {
             const container = document.getElementById('literature-cards-container');
             container.innerHTML = '';
-            literatureCards.forEach(card => {
+            literatureCards.forEach((card, index) => {
                 const div = document.createElement('div');
                 div.className = "p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4";
+                
+                // Only place the single QR code image at the beginning (next to Kartu 3 / index 0)
+                const qrCodeHTML = index === 0 ? `
+                    <div class="flex flex-col sm:flex-row items-center gap-4 bg-sky-50/70 p-4 rounded-xl border border-sky-100 mb-4">
+                        <img src="https://lh3.googleusercontent.com/d/1ba-xLmOhG840fLFEbVpCFpQK1kEKO_gx=s400" alt="QR Code Literatur" class="w-40 h-40 object-contain rounded border border-slate-200 bg-white p-1 shadow-sm flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/100x100/f0f7ff/0284c7?text=QR+Literatur';">
+                        <div class="text-xs text-sky-900 leading-relaxed">
+                            <span class="font-bold block mb-1">Scan QR Code Sumber Literatur</span>
+                            Gunakan pemindai QR untuk mengakses referensi digital utama terkait mekanika filtrasi glomerulus dan patologi ginjal.
+                        </div>
+                    </div>
+                ` : '';
+
                 div.innerHTML = `
+                    ${qrCodeHTML}
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
                         <div>
                             <h4 class="font-bold text-slate-900">${card.title}</h4>
@@ -729,21 +874,14 @@
                             </select>
                         </div>
                     </div>
-                    <!-- QR Code and literature details container -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                        <div class="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-slate-200 text-center">
-                            <img src="https://lh3.googleusercontent.com/d/1ba-xLmOhG840fLFEbVpCFpQK1kEKO_gx=s400" alt="QR Code Literatur" class="w-24 h-24 object-contain mb-2 rounded border border-slate-100" onerror="this.onerror=null;this.src='https://placehold.co/120x120/f0f7ff/0284c7?text=QR+Literatur';">
-                            <span class="text-[10px] font-semibold text-slate-500">Scan QR Sumber Literatur</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Alasan</label>
+                            <textarea id="lit-reason-${card.id}" rows="2" placeholder="Tuliskan alasan..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs focus:ring-2 focus:ring-medical-500 focus:outline-none"></textarea>
                         </div>
-                        <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Alasan</label>
-                                <textarea id="lit-reason-${card.id}" rows="2" placeholder="Tuliskan alasan..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs focus:ring-2 focus:ring-medical-500 focus:outline-none"></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Informasi Penting yang Ditemukan</label>
-                                <textarea id="lit-info-${card.id}" rows="2" placeholder="Tuliskan informasi penting..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs focus:ring-2 focus:ring-medical-500 focus:outline-none"></textarea>
-                            </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Informasi Penting yang Ditemukan</label>
+                            <textarea id="lit-info-${card.id}" rows="2" placeholder="Tuliskan informasi penting..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs focus:ring-2 focus:ring-medical-500 focus:outline-none"></textarea>
                         </div>
                     </div>
                 `;
@@ -814,14 +952,18 @@
             e.preventDefault();
             const groupName = document.getElementById('group-name').value;
             const groupNum = document.getElementById('group-number').value;
-            const members = document.getElementById('group-members').value;
+            const ilmuwan = document.getElementById('role-ilmuwan').value;
+            const peneliti = document.getElementById('role-peneliti').value;
+            const pencatat = document.getElementById('role-pencatat').value;
+            const jurubicara = document.getElementById('role-jurubicara').value;
+            const members = `1. Ilmuwan: ${ilmuwan}, 2. Peneliti Literatur: ${peneliti}, 3. Pencatat: ${pencatat}, 4. Juru Bicara: ${jurubicara}`;
             const representative = document.getElementById('group-representative').value;
             const date = document.getElementById('group-date').value;
 
             currentActiveGroupNumber = groupNum;
             localStorage.setItem('dmi_group_number', groupNum);
 
-            currentGroupData.identity = { groupName, groupNumber: groupNum, members, representative, date };
+            currentGroupData.identity = { groupName, groupNumber: groupNum, roles: { ilmuwan, peneliti, pencatat, jurubicara }, members, representative, date };
             currentGroupData.updatedAt = new Date().toISOString();
 
             document.getElementById('lkpd-workspace').classList.remove('hidden');
@@ -844,6 +986,21 @@
 
             if (sectionName === 'hypothesis') {
                 currentGroupData.hypothesis = document.getElementById('hypothesis-input').value;
+            } else if (sectionName === 'physicalTest') {
+                currentGroupData.physicalTest = {
+                    utuhKejernihan: document.getElementById('physical-utuh-kejernihan').value,
+                    utuhPartikel: document.getElementById('physical-utuh-partikel').value,
+                    sobekKejernihan: document.getElementById('physical-sobek-kejernihan').value,
+                    sobekPartikel: document.getElementById('physical-sobek-partikel').value,
+                    notes: document.getElementById('physical-notes').value
+                };
+            } else if (sectionName === 'analogy') {
+                currentGroupData.analogy = {
+                    kertas: document.getElementById('analogy-kertas').value,
+                    tepung: document.getElementById('analogy-tepung').value,
+                    air: document.getElementById('analogy-air').value,
+                    saringan: document.getElementById('analogy-saringan').value
+                };
             } else if (sectionName === 'labAnalysis') {
                 const labData = {};
                 labComponents.forEach(comp => {
@@ -877,30 +1034,33 @@
             }
 
             currentGroupData.updatedAt = new Date().toISOString();
+            
             await persistDataToCloud();
-            showNotification(`Bagian ${sectionName} berhasil disimpan!`, 'success');
+            showNotification(`Bagian ${sectionName} berhasil disimpan & disinkronkan ke Firebase!`, 'success');
         }
 
-   async function persistDataToCloud() {
-    localStorage.setItem(`dmi_group_${currentActiveGroupNumber}`, JSON.stringify(currentGroupData));
+        async function persistDataToCloud() {
+            localStorage.setItem(`dmi_group_${currentActiveGroupNumber}`, JSON.stringify(currentGroupData));
+            
+            let master = JSON.parse(localStorage.getItem('dmi_master_groups') || '{}');
+            master[currentActiveGroupNumber] = currentGroupData;
+            localStorage.setItem('dmi_master_groups', JSON.stringify(master));
 
-    if (!db) {
-        showNotification('Peringatan: Database cloud tidak terhubung.', 'error');
-        return;
-    }
+            if (!db || !currentUser) {
+                document.getElementById('sync-status-indicator').textContent = 'Tersimpan (Local Mode)';
+                return;
+            }
 
-    try {
-        // Simpan langsung ke koleksi utama 'groups'
-        const groupDocRef = doc(db, 'groups', `group_${currentActiveGroupNumber}`);
-        await setDoc(groupDocRef, currentGroupData, { merge: true });
+            try {
+                const groupDocRef = doc(db, 'artifacts', appId, 'groups', `group_${currentActiveGroupNumber}`);
+                await setDoc(groupDocRef, currentGroupData, { merge: true });
+                document.getElementById('sync-status-indicator').textContent = 'Tersimpan & Sinkron ke Firebase';
+            } catch (err) {
+                console.warn("Cloud persistence notice:", err);
+                document.getElementById('sync-status-indicator').textContent = 'Tersimpan di Perangkat';
+            }
+        }
 
-        document.getElementById('sync-status-indicator').textContent = 'Tersimpan & Sinkron ke Cloud';
-        showNotification('Tugas berhasil dikirim ke server guru!', 'success');
-    } catch (err) {
-        console.error("Gagal menyimpan ke Firebase:", err);
-        showNotification('Gagal menyinkronkan ke server.', 'error');
-    }
-}
         async function fetchGroupData(groupNum) {
             let local = localStorage.getItem(`dmi_group_${groupNum}`);
             if (local) {
@@ -927,7 +1087,14 @@
 
             document.getElementById('group-name').value = currentGroupData.identity.groupName || '';
             document.getElementById('group-number').value = currentGroupData.identity.groupNumber || '';
-            document.getElementById('group-members').value = currentGroupData.identity.members || '';
+            if (currentGroupData.identity.roles) {
+                document.getElementById('role-ilmuwan').value = currentGroupData.identity.roles.ilmuwan || '';
+                document.getElementById('role-peneliti').value = currentGroupData.identity.roles.peneliti || '';
+                document.getElementById('role-pencatat').value = currentGroupData.identity.roles.pencatat || '';
+                document.getElementById('role-jurubicara').value = currentGroupData.identity.roles.jurubicara || '';
+            } else if (currentGroupData.identity.members) {
+                document.getElementById('role-ilmuwan').value = currentGroupData.identity.members;
+            }
             document.getElementById('group-representative').value = currentGroupData.identity.representative || '';
             document.getElementById('group-date').value = currentGroupData.identity.date || new Date().toISOString().split('T')[0];
 
@@ -940,6 +1107,21 @@
 
             if (currentGroupData.hypothesis) {
                 document.getElementById('hypothesis-input').value = currentGroupData.hypothesis;
+            }
+
+            if (currentGroupData.physicalTest) {
+                document.getElementById('physical-utuh-kejernihan').value = currentGroupData.physicalTest.utuhKejernihan || '';
+                document.getElementById('physical-utuh-partikel').value = currentGroupData.physicalTest.utuhPartikel || '';
+                document.getElementById('physical-sobek-kejernihan').value = currentGroupData.physicalTest.sobekKejernihan || '';
+                document.getElementById('physical-sobek-partikel').value = currentGroupData.physicalTest.sobekPartikel || '';
+                document.getElementById('physical-notes').value = currentGroupData.physicalTest.notes || '';
+            }
+
+            if (currentGroupData.analogy) {
+                document.getElementById('analogy-kertas').value = currentGroupData.analogy.kertas || '';
+                document.getElementById('analogy-tepung').value = currentGroupData.analogy.tepung || '';
+                document.getElementById('analogy-air').value = currentGroupData.analogy.air || '';
+                document.getElementById('analogy-saringan').value = currentGroupData.analogy.saringan || '';
             }
 
             if (currentGroupData.labAnalysis) {
@@ -976,29 +1158,40 @@
             }
         }
 
-  async function loadTeacherData() {
-    showNotification('Memuat data terbaru dari server...', 'success');
-    allGroupsData = { 1: null, 2: null, 3: null, 4: null };
-
-    if (db) {
-        try {
-            const colRef = collection(db, 'groups');
-            const querySnapshot = await getDocs(colRef);
-
-            querySnapshot.forEach((docSnap) => {
-                const id = docSnap.id;
-                if (id.startsWith('group_')) {
-                    const num = id.replace('group_', '');
-                    allGroupsData[num] = docSnap.data();
+        async function loadTeacherData() {
+            let master = JSON.parse(localStorage.getItem('dmi_master_groups') || '{}');
+            for (let i = 1; i <= 4; i++) {
+                if (master[i]) {
+                    allGroupsData[i] = master[i];
+                } else {
+                    const local = localStorage.getItem(`dmi_group_${i}`);
+                    if (local) {
+                        allGroupsData[i] = JSON.parse(local);
+                    } else {
+                        allGroupsData[i] = null;
+                    }
                 }
-            });
-        } catch (err) {
-            console.error("Gagal mengambil data dari Firestore:", err);
-        }
-    }
+            }
 
-    updateTeacherMetricsAndCards();
-}
+            if (useCloud && db) {
+                try {
+                    const colRef = collection(db, 'artifacts', appId, 'groups');
+                    const querySnapshot = await getDocs(colRef);
+                    querySnapshot.forEach((docSnap) => {
+                        const id = docSnap.id;
+                        if (id.startsWith('group_')) {
+                            const num = id.replace('group_', '');
+                            allGroupsData[num] = docSnap.data();
+                        }
+                    });
+                } catch (err) {
+                    console.warn("Cloud teacher fetch restricted, using local records:", err);
+                }
+            }
+
+            updateTeacherMetricsAndCards();
+            showNotification('Data guru berhasil dimuat!', 'success');
+        }
 
         let currentFilterStatus = 'all';
         let currentSearchQuery = '';
@@ -1023,11 +1216,13 @@
                     submittedCount++;
                     let filled = 0;
                     if (data.hypothesis) filled++;
+                    if (data.physicalTest && data.physicalTest.utuhKejernihan) filled++;
+                    if (data.analogy && data.analogy.kertas) filled++;
                     if (data.labAnalysis && Object.keys(data.labAnalysis).length > 0) filled++;
                     if (data.literature && Object.keys(data.literature).length > 0) filled++;
                     if (data.synthesis && Object.keys(data.synthesis).length > 0) filled++;
                     if (data.evaluation && data.evaluation.evalValidation) filled++;
-                    totalProgressSum += Math.round((filled / 5) * 100);
+                    totalProgressSum += Math.round((filled / 7) * 100);
                 }
             }
 
@@ -1057,12 +1252,14 @@
                 let filled = 0;
                 if (hasSubmitted) {
                     if (data.hypothesis) filled++;
+                    if (data.physicalTest && data.physicalTest.utuhKejernihan) filled++;
+                    if (data.analogy && data.analogy.kertas) filled++;
                     if (data.labAnalysis && Object.keys(data.labAnalysis).length > 0) filled++;
                     if (data.literature && Object.keys(data.literature).length > 0) filled++;
                     if (data.synthesis && Object.keys(data.synthesis).length > 0) filled++;
                     if (data.evaluation && data.evaluation.evalValidation) filled++;
                 }
-                const progressPct = Math.round((filled / 5) * 100);
+                const progressPct = Math.round((filled / 7) * 100);
 
                 if (currentFilterStatus === 'active' && !hasSubmitted) continue;
                 if (currentFilterStatus === 'empty' && hasSubmitted) continue;
@@ -1120,6 +1317,9 @@
             document.getElementById('modal-group-num').textContent = `Kelompok ${groupNum} (${data.identity.groupName})`;
             document.getElementById('modal-group-name').textContent = data.identity.groupName;
 
+            const pt = data.physicalTest || {};
+            const an = data.analogy || {};
+
             const contentDiv = document.getElementById('modal-group-content');
             contentDiv.innerHTML = `
                 <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
@@ -1138,7 +1338,40 @@
                 </div>
 
                 <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
-                    <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-flask text-emerald-600 mr-2"></i> 2. Data Hasil Analisis Rekam Medis</h4>
+                    <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-filter text-teal-600 mr-2"></i> 2. Data Hasil Uji Fisik Saringan</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left">
+                            <tr class="bg-slate-100 font-semibold"><th class="p-2">Kondisi Saringan</th><th class="p-2">Kejernihan Cairan</th><th class="p-2">Partikel Tepung</th></tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="p-2 font-medium">Saringan UTUH</td>
+                                <td class="p-2">${pt.utuhKejernihan || '-'}</td>
+                                <td class="p-2">${pt.utuhPartikel || '-'}</td>
+                            </tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="p-2 font-medium">Saringan SOBEK</td>
+                                <td class="p-2">${pt.sobekKejernihan || '-'}</td>
+                                <td class="p-2">${pt.sobekPartikel || '-'}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="text-xs mt-2"><strong class="text-slate-400">Catatan Tambahan:</strong> ${pt.notes || '-'}</div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                    <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-shuffle text-indigo-600 mr-2"></i> Transformasi Analogi ke Konsep Biologi</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs text-left">
+                            <tr class="bg-slate-100 font-semibold"><th class="p-2">Elemen Simulasi (Stasiun A)</th><th class="p-2">Komponen Biologis Nyata (Stasiun B)</th></tr>
+                            <tr class="border-b border-slate-100"><td class="p-2 font-medium">Kertas saring</td><td class="p-2">${an.kertas || '-'}</td></tr>
+                            <tr class="border-b border-slate-100"><td class="p-2 font-medium">Partikel tepung</td><td class="p-2">${an.tepung || '-'}</td></tr>
+                            <tr class="border-b border-slate-100"><td class="p-2 font-medium">Air yang lolos</td><td class="p-2">${an.air || '-'}</td></tr>
+                            <tr class="border-b border-slate-100"><td class="p-2 font-medium">Saringan yang dilubangi</td><td class="p-2">${an.saringan || '-'}</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                    <h4 class="font-bold text-slate-900 border-b pb-2"><i class="fa-solid fa-flask text-emerald-600 mr-2"></i> 3. Data Hasil Analisis Rekam Medis</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full text-xs text-left">
                             <tr class="bg-slate-100 font-semibold"><th class="p-2">Komponen</th><th class="p-2">Normal</th><th class="p-2">Hasil Pasien</th></tr>
@@ -1201,7 +1434,7 @@
             document.getElementById('teacher-detail-modal').classList.remove('hidden');
         }
 
-        window.deleteGroupSubmission = function(groupNum) {
+        function deleteGroupSubmission(groupNum) {
             localStorage.removeItem(`dmi_group_${groupNum}`);
             
             let master = JSON.parse(localStorage.getItem('dmi_master_groups') || '{}');
@@ -1228,7 +1461,7 @@
             closeTeacherDetailModal();
             loadTeacherData();
             showNotification(`Tugas Kelompok ${groupNum} berhasil dihapus.`, 'success');
-        };
+        }
 
         function closeTeacherDetailModal() {
             document.getElementById('teacher-detail-modal').classList.add('hidden');
